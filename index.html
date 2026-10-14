@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Voice Retrace</title>
+<meta name="description" content="話し声の録音から、ノイズや残響を取り除く Mac 用の無料アプリ。音声修復モデル Sidon を使用。URMA Sound 制作。">
+<meta property="og:title" content="Voice Retrace — URMA Sound">
+<meta property="og:description" content="話し声の録音から、ノイズや残響を取り除く Mac 用の無料アプリ。">
+<meta name="color-scheme" content="dark">
+<style>
+  :root {
+    --bg: #0e0e0e;
+    --panel: #171717;
+    --line: #2a2a2a;
+    --text: #ecebe8;
+    --muted: #9b9a96;
+    --faint: #6b6a67;
+    --accent: #ecebe8;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Noto Sans JP", sans-serif;
+    line-height: 1.85;
+    letter-spacing: 0.02em;
+  }
+  main { max-width: 720px; margin: 0 auto; padding: 72px 16px 96px; }
+  header { text-align: center; margin-bottom: 72px; }
+  h1 {
+    font-size: clamp(34px, 7vw, 52px);
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    margin: 0 0 4px;
+  }
+  .ver { color: var(--faint); font-size: 14px; letter-spacing: 0.1em; }
+  .lead { margin: 40px 0 0; font-size: 17px; color: var(--text); }
+  .lead span { display: block; }
+  .sub { color: var(--muted); font-size: 14px; margin-top: 20px; }
+  .actions { margin-top: 44px; display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+  .btn {
+    display: inline-block;
+    padding: 13px 26px;
+    border-radius: 999px;
+    text-decoration: none;
+    font-size: 15px;
+    border: 1px solid var(--accent);
+    transition: opacity .15s;
+  }
+  .btn:hover { opacity: .8; }
+  .btn.primary { background: var(--accent); color: var(--bg); font-weight: 600; }
+  .btn.ghost { color: var(--text); }
+  .note { color: var(--faint); font-size: 12px; margin-top: 14px; }
+  section { border-top: 1px solid var(--line); padding: 44px 0 8px; }
+  h2 { font-size: 15px; font-weight: 600; letter-spacing: 0.12em; color: var(--muted); margin: 0 0 20px; }
+  p { margin: 0 0 16px; }
+  ol, ul { margin: 0 0 16px; padding-left: 1.4em; }
+  li { margin-bottom: 8px; }
+  .muted { color: var(--muted); }
+  .small { font-size: 13px; }
+  code, .mono {
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 12.5px;
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 2px 6px;
+    word-break: break-all;
+  }
+  pre {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 12px 14px;
+    overflow-x: auto;
+    font-size: 12.5px;
+    margin: 0 0 16px;
+  }
+  pre code { background: none; border: 0; padding: 0; }
+  dl { display: grid; grid-template-columns: 7.5em 1fr; gap: 6px 16px; margin: 0 0 16px; }
+  dt { color: var(--muted); }
+  dd { margin: 0; }
+  .two { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .card { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 18px 20px; }
+  .card h3 { font-size: 14px; margin: 0 0 8px; font-weight: 600; }
+  .card ul { margin: 0; }
+  .support { text-align: center; }
+  .support p { color: var(--muted); }
+  footer { margin-top: 72px; text-align: center; color: var(--faint); font-size: 12px; }
+  a { color: var(--text); }
+  [hidden] { display: none !important; }
+  @media (max-width: 560px) {
+    main { padding-top: 48px; }
+    .two { grid-template-columns: 1fr; }
+    dl { grid-template-columns: 1fr; gap: 0; }
+    dd { margin-bottom: 10px; }
+  }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <h1>Voice Retrace</h1>
+    <div class="ver">for Mac ・ <span data-version>1.0</span> ・ 無料</div>
+    <p class="lead">
+      <span>ざわめきの向こうにあった、声だけを。</span>
+    </p>
+    <p class="sub">
+      話し声の録音から、ノイズや残響を取り除く Mac 用のアプリです。<br>
+      東京大学 猿渡・齋藤研究室が公開している音声修復モデル「Sidon」で、声を描き直します。
+    </p>
+    <div class="actions">
+      <a class="btn primary" data-download href="#">ダウンロード（DMG）</a>
+      <a class="btn ghost" data-kofi href="#" target="_blank" rel="noopener">☕ 支援する</a>
+    </div>
+    <p class="note">Apple Silicon（M1 以降）・macOS 15 以降 ／ 約 430MB</p>
+  </header>
+
+  <section>
+    <h2>できること</h2>
+    <ul>
+      <li>音声ファイルやフォルダをドロップするだけで、順番に処理します</li>
+      <li>「修正前 ←→ Sidon」のスライダーで、元の音との混ぜ具合を聴きながら決められます</li>
+      <li>48k / 44.1k、24bit / 16bit の WAV で書き出し。元のファイルは書き換えません</li>
+      <li>処理はすべてお使いの Mac の中で行い、音声を外に送ることはありません</li>
+    </ul>
+    <div class="two">
+      <div class="card">
+        <h3>得意なもの</h3>
+        <ul class="small">
+          <li>話し声のノイズ・残響</li>
+          <li>帯域の狭さ・こもり</li>
+          <li>軽い音割れ</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>苦手なもの</h3>
+        <ul class="small">
+          <li>音楽・歌・楽器・効果音</li>
+          <li>元の音の正確さが必要な用途（証拠・記録など）</li>
+        </ul>
+      </div>
+    </div>
+    <p class="small muted" style="margin-top:16px">
+      Sidon はノイズを差し引くのではなく、声の特徴から音声を作り直します。そのため、元の録音と完全に同じにはなりません。
+      元の音を多く混ぜると、声がにじんで聞こえることがあります。
+    </p>
+  </section>
+
+  <section>
+    <h2>インストールと初回の起動</h2>
+    <p class="muted small">Voice Retrace は Apple の公証を受けていないため、初回だけ macOS に止められます。次の手順で開いてください。2回目からは普通に開けます。</p>
+    <ol>
+      <li>DMG を開き、「Voice Retrace」を「Applications」フォルダにドラッグします。</li>
+      <li>アプリを開くと「開いていません」「マルウェアが含まれていないことを検証できませんでした」のような警告が出るので、<b>「完了」</b>を押します（「ゴミ箱に入れる」は押さないでください）。</li>
+      <li>「システム設定」→「プライバシーとセキュリティ」を開き、下の方の「“Voice Retrace”の使用がブロックされました」の横にある<b>「このまま開く」</b>を押します。</li>
+      <li>パスワード（または Touch ID）を入れると開けるようになります。</li>
+      <li>初回は「ライセンスと免責事項」が表示されます。内容を確認し、同意する場合は「同意して使う」を押してください。</li>
+    </ol>
+    <p class="small muted">ターミナルを使える方は、手順 2〜4 の代わりに次の1行でも開けます。</p>
+    <pre><code>xattr -dr com.apple.quarantine "/Applications/Voice Retrace.app"</code></pre>
+    <p class="small muted">会社や学校などで管理されている Mac では、「このまま開く」が表示されないことがあります。</p>
+  </section>
+
+  <section>
+    <h2>ダウンロード</h2>
+    <dl>
+      <dt>バージョン</dt><dd data-version>1.0</dd>
+      <dt>動作環境</dt><dd>Apple Silicon（M1 以降）の Mac、macOS 15 以降、空き容量 約 500MB</dd>
+      <dt>SHA-256</dt><dd><span class="mono" data-sha256>—</span></dd>
+    </dl>
+    <p class="small muted">SHA-256 は、ダウンロードしたファイルが途中で書き換えられていないかを確かめるための値です。ターミナルで <code>shasum -a 256 VoiceRetrace-1.0.dmg</code> を実行すると確認できます。</p>
+    <p><a class="btn primary" data-download href="#">ダウンロード（DMG）</a></p>
+  </section>
+
+  <section class="support" data-kofi-section>
+    <h2>支援について</h2>
+    <p>Voice Retrace は無料です。<br>気に入っていただけたら、Ko-fi で応援していただけるとうれしいです。</p>
+    <p class="small">支援してもしなくても、機能は同じです。</p>
+    <p><a class="btn ghost" data-kofi href="#" target="_blank" rel="noopener">☕ Ko-fi で支援する</a></p>
+  </section>
+
+  <section>
+    <h2>クレジット</h2>
+    <p class="small">
+      音声修復には <a href="https://github.com/sarulab-speech/Sidon" target="_blank" rel="noopener">Sidon</a>
+      （sarulab-speech/sidon-v0.1、MIT License）を使用しています。<br>
+      W. Nakata, Y. Saito, Y. Ueda, H. Saruwatari, “Sidon: Fast and Robust Open-Source Multilingual Speech Restoration for Large-scale Dataset Cleansing,”
+      <a href="https://arxiv.org/abs/2509.17052" target="_blank" rel="noopener">arXiv:2509.17052</a>, 2025.
+    </p>
+    <p class="small muted">
+      このほか w2v-BERT 2.0（Meta, MIT）、Descript Audio Codec（Descript, MIT）、Hugging Face Transformers（Apache License 2.0）に由来するコード・モデルを含みます。ライセンス全文はアプリ内の「ライセンスと免責事項」に収録しています。
+    </p>
+  </section>
+
+  <section>
+    <h2>免責事項</h2>
+    <ul class="small muted">
+      <li>Voice Retrace は URMA Sound が作成した非公式のアプリです。東京大学 猿渡・齋藤研究室、Sidon の作者、Meta、Descript、Hugging Face とは関係がなく、承認・推奨を受けていません。</li>
+      <li>本アプリは無保証です。使用によって生じた損害について、URMA Sound は責任を負いません。</li>
+      <li>Sidon の論文には、非商用ライセンスのデータを含む学習データが記載されています。商用目的で使う場合は、ご自身の判断と責任で行ってください。</li>
+      <li>処理する音声の権利は、ご自身で確認してください。人を誤認させる目的で使わないでください。</li>
+      <li>詳しくはアプリ内の「ライセンスと免責事項」をご確認ください。</li>
+    </ul>
+  </section>
+
+  <footer>
+    <div>© 2026 URMA Sound ・ <a href="mailto:urmasound.inc@gmail.com">urmasound.inc@gmail.com</a></div>
+  </footer>
+</main>
+
+<script>
+  // 公開時にここだけ書き換える
+  const CONFIG = {
+    version: "1.0",
+    downloadUrl: "https://github.com/urmasound/voice-retrace/releases/download/v1.0/VoiceRetrace-1.0.dmg",   // GitHub Releases の DMG の URL
+    kofiUrl: "https://ko-fi.com/voiceretrace",       // Ko-fi のページ
+    sha256: "0c183f4bbe077c8bd85b9f1e5fa6784627325e10dcee0c3625f24d5f729dad45",
+  };
+  document.querySelectorAll("[data-version]").forEach(e => e.textContent = CONFIG.version);
+  document.querySelectorAll("[data-download]").forEach(e => {
+    if (CONFIG.downloadUrl) e.href = CONFIG.downloadUrl;
+    else { e.removeAttribute("href"); e.textContent = "準備中"; e.style.opacity = .5; }
+  });
+  if (CONFIG.kofiUrl) {
+    document.querySelectorAll("[data-kofi]").forEach(e => e.href = CONFIG.kofiUrl);
+  } else {
+    document.querySelectorAll("[data-kofi]").forEach(e => e.hidden = true);
+    document.querySelectorAll("[data-kofi-section]").forEach(e => e.hidden = true);
+  }
+  if (CONFIG.sha256) document.querySelectorAll("[data-sha256]").forEach(e => e.textContent = CONFIG.sha256);
+</script>
+</body>
+</html>
