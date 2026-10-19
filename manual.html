@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Voice Retrace マニュアル</title>
+<meta name="description" content="Voice Retrace の使い方。インストール、ファイルの入れ方、混ぜ具合の調整、書き出しまで。">
+<meta name="color-scheme" content="dark">
+<style>
+  :root {
+    --bg: #0e0e0e;
+    --panel: #171717;
+    --line: #2a2a2a;
+    --text: #ecebe8;
+    --muted: #9b9a96;
+    --faint: #6b6a67;
+    --mark: #f2b53c;
+    --mark-ink: #1a1405;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Noto Sans JP", sans-serif;
+    line-height: 1.85;
+    letter-spacing: 0.02em;
+  }
+  main { max-width: 760px; margin: 0 auto; padding: 56px 16px 96px; }
+  a { color: var(--text); }
+  .back { font-size: 13px; color: var(--muted); text-decoration: none; }
+  .back:hover { color: var(--text); }
+  h1 { font-size: clamp(26px, 5vw, 36px); font-weight: 600; letter-spacing: 0.04em; margin: 24px 0 4px; }
+  .ver { color: var(--faint); font-size: 13px; letter-spacing: 0.1em; }
+  nav.toc { margin: 32px 0 8px; padding: 16px 20px; background: var(--panel); border: 1px solid var(--line); border-radius: 10px; }
+  nav.toc ol { margin: 0; padding-left: 1.4em; font-size: 14px; }
+  nav.toc a { text-decoration: none; color: var(--muted); }
+  nav.toc a:hover { color: var(--text); }
+  section { border-top: 1px solid var(--line); padding: 44px 0 8px; margin-top: 36px; }
+  h2 { font-size: 19px; font-weight: 600; margin: 0 0 16px; letter-spacing: 0.04em; }
+  h2 .no { color: var(--faint); font-weight: 400; margin-right: 8px; }
+  h3 { font-size: 15px; font-weight: 600; margin: 24px 0 8px; }
+  p { margin: 0 0 14px; }
+  ol, ul { margin: 0 0 16px; padding-left: 1.4em; }
+  li { margin-bottom: 6px; }
+  .muted { color: var(--muted); }
+  .small { font-size: 13px; }
+  code {
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 12.5px;
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 2px 6px;
+    word-break: break-all;
+  }
+
+  figure { margin: 20px 0 18px; }
+  .shot { position: relative; border-radius: 12px; overflow: hidden; border: 1px solid var(--line); line-height: 0; }
+  .shot img { width: 100%; height: auto; display: block; }
+  .pin {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    width: 26px; height: 26px;
+    border-radius: 50%;
+    background: var(--mark);
+    color: var(--mark-ink);
+    font: 700 14px/26px -apple-system, BlinkMacSystemFont, sans-serif;
+    text-align: center;
+    box-shadow: 0 0 0 3px rgba(0,0,0,.55);
+  }
+  figcaption { font-size: 12px; color: var(--faint); margin-top: 8px; line-height: 1.6; }
+
+  ol.pins { list-style: none; padding: 0; counter-reset: pin; }
+  ol.pins li { position: relative; padding-left: 36px; margin-bottom: 12px; }
+  ol.pins li::before {
+    counter-increment: pin;
+    content: counter(pin);
+    position: absolute; left: 0; top: 2px;
+    width: 24px; height: 24px; border-radius: 50%;
+    background: var(--mark); color: var(--mark-ink);
+    font: 700 13px/24px -apple-system, BlinkMacSystemFont, sans-serif;
+    text-align: center;
+  }
+  ol.pins b { font-weight: 600; }
+
+  .note { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 14px 18px; margin: 16px 0; font-size: 14px; }
+  .note b { font-weight: 600; }
+  table { width: 100%; border-collapse: collapse; font-size: 14px; margin: 0 0 16px; }
+  th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { color: var(--muted); font-weight: 500; }
+  dl.faq dt { font-weight: 600; margin-top: 20px; }
+  dl.faq dd { margin: 6px 0 0; color: var(--muted); font-size: 14px; }
+  footer { margin-top: 72px; text-align: center; color: var(--faint); font-size: 12px; }
+  @media (max-width: 560px) {
+    main { padding-top: 32px; }
+    .pin { width: 20px; height: 20px; font-size: 11px; line-height: 20px; box-shadow: 0 0 0 2px rgba(0,0,0,.55); }
+    th, td { padding: 6px 6px; }
+  }
+</style>
+</head>
+<body>
+<main>
+  <a class="back" href="./">← Voice Retrace のページへ</a>
+  <h1>Voice Retrace マニュアル</h1>
+  <div class="ver">バージョン 1.0</div>
+
+  <nav class="toc">
+    <ol>
+      <li><a href="#install">インストール</a></li>
+      <li><a href="#first">初めて開いたとき</a></li>
+      <li><a href="#add">音声ファイルを入れる</a></li>
+      <li><a href="#queue">処理の進み具合・キャンセル・並べ替え</a></li>
+      <li><a href="#player">聴いて、混ぜて、書き出す</a></li>
+      <li><a href="#output">書き出したファイル</a></li>
+      <li><a href="#faq">うまくいかないとき</a></li>
+    </ol>
+  </nav>
+
+  <section id="install">
+    <h2><span class="no">1</span>インストール</h2>
+    <p class="small muted">必要なもの: Apple Silicon（M1 以降）の Mac、macOS 15 以降、空き容量 約 500MB</p>
+    <ol>
+      <li>配布ページから <b>VoiceRetrace-1.0.dmg</b> をダウンロードして、ダブルクリックで開きます。</li>
+      <li>開いたウィンドウの中の「Voice Retrace」を、となりの「Applications」フォルダにドラッグします。</li>
+      <li>アプリケーションフォルダから「Voice Retrace」を開きます。初回は「インターネットからダウンロードされたアプリケーションです。開いてもよろしいですか？」と確認されるので、<b>「開く」</b>を押します。</li>
+    </ol>
+    <p class="small muted">DMG はもう使わないので、Finder のサイドバーで取り出してかまいません。</p>
+  </section>
+
+  <section id="first">
+    <h2><span class="no">2</span>初めて開いたとき</h2>
+    <p>最初に「ライセンスと免責事項」が表示されます。</p>
+    <figure>
+      <div class="shot">
+        <img src="manual/02-legal.png" alt="ライセンスと免責事項の画面" width="1280" height="1120" loading="lazy">
+        <span class="pin" style="left:90.5%;top:89.8%">1</span>
+        <span class="pin" style="left:72.7%;top:89.8%">2</span>
+      </div>
+    </figure>
+    <ol class="pins">
+      <li><b>同意して使う</b> … 内容を確認し、同意する場合に押します。次からは表示されません。</li>
+      <li><b>同意しない（終了）</b> … アプリを終了します。</li>
+    </ol>
+    <p class="small muted">あとから読み返すときは、メニューの「Voice Retrace」→「ライセンスと免責事項…」を選びます。</p>
+  </section>
+
+  <section id="add">
+    <h2><span class="no">3</span>音声ファイルを入れる</h2>
+    <figure>
+      <div class="shot">
+        <img src="manual/01-start.png" alt="起動直後の画面" width="1280" height="1200" loading="lazy">
+        <span class="pin" style="left:43.8%;top:12.5%">1</span>
+        <span class="pin" style="left:39%;top:21.8%">2</span>
+        <span class="pin" style="left:59.4%;top:93%">3</span>
+        <span class="pin" style="left:89.8%;top:93%">4</span>
+      </div>
+    </figure>
+    <ol class="pins">
+      <li><b>ここにドロップ</b> … 音声ファイルやフォルダを、Finder からウィンドウにドラッグします。ウィンドウのどこに落としても大丈夫です。複数まとめて入れられます。</li>
+      <li><b>ファイルを選ぶ…</b> … ドラッグの代わりに、ファイルを選んで入れることもできます。</li>
+      <li><b>☕ 支援する</b> … Ko-fi のページが開きます（任意。支援してもしなくても機能は同じです）。</li>
+      <li><b>ライセンスと免責事項</b> … いつでも読み返せます。</li>
+    </ol>
+    <div class="note">
+      <b>入れられるファイル</b>: wav / aiff / flac / mp3 / m4a / caf<br>
+      フォルダを入れた場合は、その中の音声ファイルだけが処理されます（中のフォルダまでは見ません）。<br>
+      <b>得意なのは話し声</b>です。音楽・歌・楽器・効果音は、消えたり崩れたりします。
+    </div>
+  </section>
+
+  <section id="queue">
+    <h2><span class="no">4</span>処理の進み具合・キャンセル・並べ替え</h2>
+    <p>入れたファイルは、上から順番に1つずつ処理されます。</p>
+    <figure>
+      <div class="shot">
+        <img src="manual/03-queue.png" alt="処理中と処理待ちの一覧" width="1280" height="1200" loading="lazy">
+        <span class="pin" style="left:58.6%;top:36.2%">1</span>
+        <span class="pin" style="left:97.6%;top:36.2%">2</span>
+        <span class="pin" style="left:3.4%;top:42.3%">3</span>
+        <span class="pin" style="left:80.5%;top:30%">4</span>
+        <span class="pin" style="left:3.4%;top:56.4%">5</span>
+      </div>
+    </figure>
+    <ol class="pins">
+      <li><b>処理中のファイル</b> … いちばん上に表示され、残り時間の目安と進み具合のバーが出ます。</li>
+      <li><b>× ボタン</b> … 処理中のファイルはその場で止め、待っているファイルは処理待ちから外します。止めたファイルは「完了」の欄に「キャンセル」として残ります。</li>
+      <li><b>処理待ちのファイル</b> … ドラッグで順番を入れ替えられます。<b>処理中のファイルの上には入れられません</b>。先に処理したいファイルがあるときは、処理中のファイルを × で止めてください。</li>
+      <li><b>全体の残り</b> … 処理待ちも含めた、終わるまでの時間の目安です。使ううちに、お使いの Mac に合わせて正確になります。</li>
+      <li><b>完了</b> … 終わったファイルがここに並びます。選ぶと、下に再生パネルが出ます。</li>
+    </ol>
+    <div class="note">
+      <b>かかる時間の目安</b>: M5 Pro で、3分の音声が約8秒です。古い機種ほど時間がかかります。<br>
+      キャンセルやエラーになったファイルは、右クリック →「もう一度処理する」で処理待ちの最後に戻せます。<br>
+      右クリックからは「Finder で表示」「リストから削除」もできます。
+    </div>
+  </section>
+
+  <section id="player">
+    <h2><span class="no">5</span>聴いて、混ぜて、書き出す</h2>
+    <figure>
+      <div class="shot">
+        <img src="manual/04-player.png" alt="再生と書き出しのパネル" width="1280" height="1200" loading="lazy">
+        <span class="pin" style="left:3.4%;top:36.1%">1</span>
+        <span class="pin" style="left:2.4%;top:77.7%">2</span>
+        <span class="pin" style="left:40%;top:74.5%">3</span>
+        <span class="pin" style="left:54.7%;top:80.4%">4</span>
+        <span class="pin" style="left:2.4%;top:89.1%">5</span>
+        <span class="pin" style="left:69.9%;top:85.6%">6</span>
+        <span class="pin" style="left:90.9%;top:85.6%">7</span>
+      </div>
+    </figure>
+    <ol class="pins">
+      <li><b>完了したファイルを選ぶ</b> … 選んだファイルが、下のパネルで再生できるようになります。</li>
+      <li><b>再生・一時停止</b> … スペースキーでも操作できます。</li>
+      <li><b>再生位置</b> … ドラッグして、聴きたいところへ移動します。</li>
+      <li><b>バランス</b> … 右端（100%）が Sidon で修復した音、左端（0%）が修正前の音です。<b>再生しながら動かすと、その場で音が変わります</b>。</li>
+      <li><b>0% / 50% / 100%</b> … バランスをすぐその値にします。修正前と修復後を聴き比べるときに便利です。</li>
+      <li><b>書き出し形式</b> … サンプルレート（48k / 44.1k）とビット深度（24bit / 16bit）を選びます。選んだ設定は次回も覚えています。</li>
+      <li><b>書き出し…</b> … 今のバランスと形式で WAV を保存します。保存先とファイル名を確認して「保存」を押します。</li>
+    </ol>
+    <div class="note">
+      Sidon は、ノイズを差し引くのではなく、声の特徴から音声を<b>作り直します</b>。そのため、修正前の音を多く混ぜると、2人が同時に話しているように<b>にじんで聞こえることがあります</b>。耳で聴きながら、ちょうどいいところを探してください。
+    </div>
+  </section>
+
+  <section id="output">
+    <h2><span class="no">6</span>書き出したファイル</h2>
+    <table>
+      <tr><th>保存先</th><td>初期値は、元のファイルと同じフォルダです（保存の画面で変えられます）</td></tr>
+      <tr><th>ファイル名</th><td>バランス 100% のとき <code>元の名前_retrace.wav</code><br>それ以外は <code>元の名前_retrace_mix85.wav</code> のように、バランスの値が入ります</td></tr>
+      <tr><th>形式</th><td>WAV・モノラル。48kHz / 44.1kHz、24bit / 16bit から選択（16bit のときはディザをかけています）</td></tr>
+      <tr><th>長さ・位置</th><td>元のファイルと同じ長さです。DAW で元の音と頭をそろえて並べると、位置もぴったり合います</td></tr>
+      <tr><th>元のファイル</th><td>書き換えません</td></tr>
+    </table>
+    <p class="small muted">ステレオのファイルは、左右をまとめてモノラルで処理します。音量は、処理の前に一番大きいところが約 −1dB になるようそろえます。</p>
+  </section>
+
+  <section id="faq">
+    <h2><span class="no">7</span>うまくいかないとき</h2>
+    <dl class="faq">
+      <dt>アプリが開けない</dt>
+      <dd>Apple Silicon（M1 以降）の Mac と macOS 15 以降が必要です。Intel の Mac では動きません。会社や学校などで管理されている Mac では、管理者の設定で開けないことがあります。</dd>
+
+      <dt>一覧に「エラー」と出た</dt>
+      <dd>「エラー」の文字にマウスを乗せると、理由が表示されます。音声ファイルが壊れている、対応していない形式、などが考えられます。別の形式（wav など）に書き出し直してから入れてみてください。</dd>
+
+      <dt>「音声ファイルが見つかりませんでした」と出た</dt>
+      <dd>入れたファイルが対応形式（wav / aiff / flac / mp3 / m4a / caf）ではないか、フォルダの中に音声ファイルがありません。DAW の波形キャッシュなどは処理されません。</dd>
+
+      <dt>処理に時間がかかる</dt>
+      <dd>古い機種ほど時間がかかります。長いファイルは、処理待ちのうちに順番を入れ替えて、急ぐものを先にしてください。</dd>
+
+      <dt>声がにじむ・二重に聞こえる</dt>
+      <dd>バランスを 100%（Sidon 側）に近づけてください。修正前の音を混ぜるほど、にじみやすくなります。</dd>
+
+      <dt>音楽や効果音が消えた・崩れた</dt>
+      <dd>Sidon は話し声専用です。声以外の音は消えたり崩れたりします。声だけのトラックに使うのがおすすめです。</dd>
+
+      <dt>アンインストールしたい</dt>
+      <dd>アプリケーションフォルダの「Voice Retrace」をゴミ箱に入れてください。設定も消す場合は、ターミナルで <code>defaults delete jp.urmasound.voiceretrace</code> を実行します。</dd>
+    </dl>
+    <p class="small muted" style="margin-top:28px">解決しないときは <a href="mailto:urmasound.inc@gmail.com">urmasound.inc@gmail.com</a> までご連絡ください。お使いの Mac の機種と macOS のバージョン、画面のスクリーンショットがあると助かります（対応はできる範囲で行います）。</p>
+  </section>
+
+  <footer>
+    <div><a href="./">Voice Retrace のページへ戻る</a></div>
+    <div style="margin-top:8px">© 2026 URMA Sound</div>
+  </footer>
+</main>
+</body>
+</html>
