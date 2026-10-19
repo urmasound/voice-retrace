@@ -151,18 +151,13 @@
   </section>
 
   <section>
-    <h2>インストールと初回の起動</h2>
-    <p class="muted small">Voice Retrace は Apple の公証を受けていないため、初回だけ macOS に止められます。次の手順で開いてください。2回目からは普通に開けます。</p>
+    <h2>インストール</h2>
     <ol>
       <li>DMG を開き、「Voice Retrace」を「Applications」フォルダにドラッグします。</li>
-      <li>アプリを開くと「開いていません」「マルウェアが含まれていないことを検証できませんでした」のような警告が出るので、<b>「完了」</b>を押します（「ゴミ箱に入れる」は押さないでください）。</li>
-      <li>「システム設定」→「プライバシーとセキュリティ」を開き、下の方の「“Voice Retrace”の使用がブロックされました」の横にある<b>「このまま開く」</b>を押します。</li>
-      <li>パスワード（または Touch ID）を入れると開けるようになります。</li>
+      <li>アプリを開くと、初回は「インターネットからダウンロードされたアプリケーションです。開いてもよろしいですか？」と確認されるので、<b>「開く」</b>を押します。</li>
       <li>初回は「ライセンスと免責事項」が表示されます。内容を確認し、同意する場合は「同意して使う」を押してください。</li>
     </ol>
-    <p class="small muted">ターミナルを使える方は、手順 2〜4 の代わりに次の1行でも開けます。</p>
-    <pre><code>xattr -dr com.apple.quarantine "/Applications/Voice Retrace.app"</code></pre>
-    <p class="small muted">会社や学校などで管理されている Mac では、「このまま開く」が表示されないことがあります。</p>
+    <p class="small muted">Voice Retrace は Apple の公証を受けています。</p>
   </section>
 
   <section>
@@ -218,7 +213,7 @@
     version: "1.0",
     downloadUrl: "https://github.com/urmasound/voice-retrace/releases/download/v1.0/VoiceRetrace-1.0.dmg",   // GitHub Releases の DMG の URL
     kofiUrl: "https://ko-fi.com/voiceretrace",       // Ko-fi のページ
-    sha256: "0c183f4bbe077c8bd85b9f1e5fa6784627325e10dcee0c3625f24d5f729dad45",
+    sha256: "e5fa40aee0e30209104160a65f537a39c8107747cd2845670050bfa94287b9b3",
   };
   document.querySelectorAll("[data-version]").forEach(e => e.textContent = CONFIG.version);
   document.querySelectorAll("[data-download]").forEach(e => {
