@@ -1,18 +1,20 @@
-<!doctype html>
+<!DOCTYPE html>
+
 <html lang="ja">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
 <title>Voice Retrace</title>
-<meta name="description" content="話し声の録音から、ノイズや残響を取り除く Mac 用の無料アプリ。音声修復モデル Sidon を使用。URMA Sound 制作。">
-<meta property="og:title" content="Voice Retrace — URMA Sound">
-<meta property="og:description" content="話し声の録音から、ノイズや残響を取り除く Mac 用の無料アプリ。">
-<meta name="color-scheme" content="dark">
+<meta content="話し声の録音から、ノイズや残響を取り除く Mac 用の無料アプリ。音声修復モデル Sidon を使用。URMA Sound 制作。" name="description"/>
+<meta content="Voice Retrace — URMA Sound" property="og:title"/>
+<meta content="話し声の録音から、ノイズや残響を取り除く Mac 用の無料アプリ。" property="og:description"/>
+<meta content="dark" name="color-scheme"/>
 <style>
   :root { --bg: #0f0f0f; --panel: #171717; --text: #e8e7e4; --muted: #94938f; --faint: #6b6a67; --line: #262626; }
   * { box-sizing: border-box; }
   html { -webkit-text-size-adjust: 100%; }
   body {
+    word-break: keep-all; overflow-wrap: anywhere; line-break: strict; text-wrap: pretty;
     margin: 0; background: var(--bg); color: var(--text);
     font: 15px/1.85 -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Noto Sans JP", sans-serif;
     letter-spacing: 0.01em;
@@ -55,93 +57,86 @@
 </head>
 <body>
 <main>
-  <header>
-    <h1>Voice Retrace</h1>
-    <div class="meta">for Mac ・ <span data-version></span> ・ 無料</div>
-    <p class="lead">話し声の録音から、ノイズや残響を取り除く Mac 用のアプリです。東京大学 猿渡・齋藤研究室が公開している音声修復モデル「Sidon」で、声を描き直します。</p>
-    <div class="actions">
-      <a class="btn" data-download href="#">ダウンロード（DMG）</a>
-      <span class="links">
-        <a href="manual.html">使い方マニュアル</a> ・
-        <a data-manual-pdf href="#" download>PDF</a> ・
-        <a data-kofi href="#" target="_blank" rel="noopener">支援する（Ko-fi）</a>
-      </span>
-    </div>
-    <p class="note">Apple Silicon（M1 以降）・macOS 15 以降 ／ 約 430MB ／ Apple の公証済み</p>
-  </header>
-
-  <section>
-    <h2>できること</h2>
-    <ul>
-      <li>音声ファイルやフォルダをドロップするだけで、順番に処理します</li>
-      <li>「修正前 ←→ Sidon」のスライダーで、元の音との混ぜ具合を聴きながら決められます</li>
-      <li>48k / 44.1k、24bit / 16bit の WAV で書き出し。元のファイルは書き換えません</li>
-      <li>処理はすべてお使いの Mac の中で行い、音声を外に送ることはありません</li>
-    </ul>
-    <div class="two">
-      <div><h3>得意なもの</h3><ul><li>話し声のノイズ・残響</li><li>帯域の狭さ・こもり</li><li>軽い音割れ</li></ul></div>
-      <div><h3>苦手なもの</h3><ul><li>音楽・歌・楽器・効果音</li><li>元の音の正確さが必要な用途（証拠・記録など）</li></ul></div>
-    </div>
-    <p class="small muted">声の特徴から音声を作り直す仕組みのため、元の録音と完全に同じにはなりません。元の音を多く混ぜると、にじんで聞こえることがあります。書き出しはモノラルです。</p>
-  </section>
-
-  <section>
-    <h2>インストール</h2>
-    <ol>
-      <li>DMG を開き、「Voice Retrace」を「Applications」フォルダにドラッグします。</li>
-      <li>アプリケーションフォルダから開きます。初回は確認が出るので「開く」を押します。</li>
-      <li>「ライセンスと免責事項」を確認し、同意する場合は「同意して使う」を押します。</li>
-    </ol>
-    <p class="small muted">初めて開いたときは、モデルの準備に少し時間がかかります（ネット接続は不要）。DMG の中から直接開かず、Applications フォルダに移してから使ってください。動作環境: Apple Silicon（M1 以降）の Mac、macOS 15 以降、空き容量 約 1GB。画面の写真つきの説明は <a href="manual.html">使い方マニュアル</a> へ。</p>
-  </section>
-
-  <section>
-    <h2>リリースノート</h2>
-    <div class="rel">
-      <h3>1.0.3<span class="date">2026-10-23</span></h3>
-      <ul class="small">
-        <li>macOS 15（Sequoia）で、起動時の「準備中」にメモリを大量に使って固まる問題と、処理中に強制終了する問題を修正しました。</li>
-        <li>モデルの準備を、お使いの Mac で初回に行うようにしました。macOS を更新したときは、もう一度だけ準備をし直します。</li>
-        <li>ステレオのファイルを入れたとき、モノラルにまとめる方法を選べるようにしました（左右をまとめる／右を反転してまとめる／左だけ／右だけ）。左右が逆相のもの、片側にしか音がないものは自動で見分けて知らせます。</li>
-        <li>DMG の中から直接開いたときに、Applications フォルダへ移すよう案内するようにしました。</li>
-        <li>不具合の報告用に、動作の記録（ログ）を残すようにしました。メニューの「Voice Retrace → ログを Finder で表示」で開けます。</li>
-        <li>32秒より長いファイルの処理を少し速くしました。</li>
-      </ul>
-    </div>
-    <details>
-      <summary>以前のバージョン</summary>
-      <div class="rel" style="margin-top:12px">
-        <h3>1.0<span class="date">2026-10-19</span></h3>
-        <ul class="small"><li>最初のリリース。</li></ul>
-      </div>
-    </details>
-  </section>
-
-  <section>
-    <h2>支援について</h2>
-    <p class="small">Voice Retrace は無料です。気に入っていただけたら、<a data-kofi href="#" target="_blank" rel="noopener">Ko-fi</a> で応援していただけるとうれしいです。支援してもしなくても、機能は同じです。</p>
-  </section>
-
-  <section>
-    <h2>クレジット・免責事項</h2>
-    <p class="small">
-      音声修復: <a href="https://github.com/sarulab-speech/Sidon" target="_blank" rel="noopener">Sidon</a>（sarulab-speech/sidon-v0.1、MIT License）<br>
-      W. Nakata, Y. Saito, Y. Ueda, H. Saruwatari, “Sidon: Fast and Robust Open-Source Multilingual Speech Restoration for Large-scale Dataset Cleansing,” <a href="https://arxiv.org/abs/2509.17052" target="_blank" rel="noopener">arXiv:2509.17052</a>, 2025.
+<header>
+<h1>Voice Retrace</h1>
+<div class="meta">for Mac ・ <span data-version=""></span> ・ 無料</div>
+<p class="lead">話し声の<wbr>録音から、<wbr>ノイズや<wbr>残響を<wbr>取り除く<wbr> Mac 用の<wbr>アプリです。<wbr>東京大学 猿渡・齋藤研究室が<wbr>公開している<wbr>音声修復モデル<wbr>「Sidon」で、<wbr>声を<wbr>描き直します。</p>
+<div class="actions">
+<a class="btn" data-download="" href="#">ダウンロード<wbr>（DMG）</a>
+<span class="links">
+<a href="manual.html">使い方マニュアル</a> ・
+        <a data-manual-pdf="" download="" href="#">PDF</a> ・
+        <a data-kofi="" href="#" rel="noopener" target="_blank">支援する<wbr>（Ko-fi）</a>
+</span>
+</div>
+<p class="note">Apple Silicon<wbr>（M1 以降）<wbr>・macOS 15 以降<wbr> ／ 約 430MB ／ Apple の<wbr>公証済み</p>
+</header>
+<section>
+<h2>できる<wbr>こと</h2>
+<ul>
+<li>音声ファイルや<wbr>フォルダを<wbr>ドロップするだけで、<wbr>順番に<wbr>処理します</li>
+<li>「修正前 ←→ Sidon」の<wbr>スライダーで、<wbr>元の<wbr>音との<wbr>混ぜ具合を<wbr>聴きながら<wbr>決められます</li>
+<li>48k / 44.1k、<wbr>24bit / 16bit の<wbr> WAV で<wbr>書き出し。<wbr>元の<wbr>ファイルは<wbr>書き換えません</li>
+<li>処理は<wbr>すべてお使いの<wbr> Mac の<wbr>中で<wbr>行い、<wbr>音声を<wbr>外に<wbr>送る<wbr>ことは<wbr>ありません</li>
+</ul>
+<div class="two">
+<div><h3>得意な<wbr>もの</h3><ul><li>話し声の<wbr>ノイズ・残響</li><li>帯域の<wbr>狭さ・こもり</li><li>軽い<wbr>音割れ</li></ul></div>
+<div><h3>苦手な<wbr>もの</h3><ul><li>音楽・歌・楽器・効果音</li><li>元の<wbr>音の<wbr>正確さが<wbr>必要な<wbr>用途<wbr>（証拠・記録など）</li></ul></div>
+</div>
+<p class="small muted">声の<wbr>特徴から<wbr>音声を<wbr>作り直す<wbr>仕組みの<wbr>ため、<wbr>元の<wbr>録音と<wbr>完全に<wbr>同じには<wbr>なりません。<wbr>元の<wbr>音を<wbr>多く<wbr>混ぜると、にじんで<wbr>聞こえる<wbr>ことがあります。<wbr>書き出しは<wbr>モノラルです。</p>
+</section>
+<section>
+<h2>インストール</h2>
+<ol>
+<li>DMG を<wbr>開き、<wbr>「Voice Retrace」を<wbr>「Applications」フォルダに<wbr>ドラッグします。</li>
+<li>アプリケーションフォルダから<wbr>開きます。<wbr>初回は<wbr>確認が<wbr>出るので<wbr>「開く」を<wbr>押します。</li>
+<li>「ライセンスと<wbr>免責事項」を<wbr>確認し、<wbr>同意する<wbr>場合は<wbr>「同意して<wbr>使う」を<wbr>押します。</li>
+</ol>
+<p class="small muted">初めて<wbr>開いた<wbr>ときは、<wbr>モデルの<wbr>準備に<wbr>少し<wbr>時間が<wbr>かかります<wbr>（ネット接続は<wbr>不要）。<wbr>DMG の<wbr>中から<wbr>直接開かず、<wbr>Applications フォルダに<wbr>移してから<wbr>使ってください。<wbr>動作環境: Apple Silicon<wbr>（M1 以降）の<wbr> Mac、<wbr>macOS 15 以降、<wbr>空き容量 約 1GB。<wbr>画面の<wbr>写真つきの<wbr>説明は<wbr> <a href="manual.html">使い方マニュアル</a> へ。</p>
+</section>
+<section>
+<h2>リリースノート</h2>
+<div class="rel">
+<h3>1.0.3<span class="date">2026-10-23</span></h3>
+<ul class="small">
+<li>macOS 15<wbr>（Sequoia）で、<wbr>起動時の<wbr>「準備中」に<wbr>メモリを<wbr>大量に<wbr>使って<wbr>固まる<wbr>問題と、<wbr>処理中に<wbr>強制終了する<wbr>問題を<wbr>修正しました。</li>
+<li>モデルの<wbr>準備を、<wbr>お使いの<wbr> Mac で<wbr>初回に<wbr>行うようにしました。<wbr>macOS を<wbr>更新した<wbr>ときは、<wbr>もう<wbr>一度だけ準備を<wbr>し直します。</li>
+<li>ステレオの<wbr>ファイルを<wbr>入れた<wbr>とき、<wbr>モノラルに<wbr>まとめる<wbr>方法を<wbr>選べるようにしました<wbr>（左右を<wbr>まとめる<wbr>／右を<wbr>反転して<wbr>まとめる<wbr>／左だけ／右だけ）。<wbr>左右が<wbr>逆相の<wbr>もの、<wbr>片側にしか<wbr>音が<wbr>ない<wbr>ものは<wbr>自動で<wbr>見分けて<wbr>知らせます。</li>
+<li>DMG の<wbr>中から<wbr>直接開いた<wbr>ときに、<wbr>Applications フォルダへ<wbr>移すよう案内するようにしました。</li>
+<li>不具合の<wbr>報告用に、<wbr>動作の<wbr>記録<wbr>（ログ）を<wbr>残すようにしました。<wbr>メニューの<wbr>「Voice Retrace → ログを<wbr> Finder で<wbr>表示」で<wbr>開けます。</li>
+<li>32秒より<wbr>長いファイルの<wbr>処理を<wbr>少し<wbr>速くしました。</li>
+</ul>
+</div>
+<details>
+<summary>以前の<wbr>バージョン</summary>
+<div class="rel" style="margin-top:12px">
+<h3>1.0<span class="date">2026-10-19</span></h3>
+<ul class="small"><li>最初の<wbr>リリース。</li></ul>
+</div>
+</details>
+</section>
+<section>
+<h2>支援に<wbr>ついて</h2>
+<p class="small">Voice Retrace は<wbr>無料です。<wbr>気に入っていただけたら、<a data-kofi="" href="#" rel="noopener" target="_blank">Ko-fi</a> で<wbr>応援していただけると<wbr>うれしいです。<wbr>支援してもしなくても、<wbr>機能は<wbr>同じです。</p>
+</section>
+<section>
+<h2>クレジット・免責事項</h2>
+<p class="small">
+      音声修復: <a href="https://github.com/sarulab-speech/Sidon" rel="noopener" target="_blank">Sidon</a>（sarulab-speech/sidon-v0.1、<wbr>MIT License）<br/>
+      W. Nakata, Y. Saito, Y. Ueda, H. Saruwatari, “Sidon: Fast and Robust Open-Source Multilingual Speech Restoration for Large-scale Dataset Cleansing,” <a href="https://arxiv.org/abs/2509.17052" rel="noopener" target="_blank">arXiv:2509.17052</a>, 2025.
     </p>
-    <p class="small muted">このほか w2v-BERT 2.0（Meta, MIT）、Descript Audio Codec（Descript, MIT）、Hugging Face Transformers（Apache License 2.0）に由来するコード・モデルを含みます。ライセンス全文はアプリ内に収録しています。</p>
-    <p class="small muted">
-      Voice Retrace は URMA Sound が作成した非公式のアプリです。東京大学 猿渡・齋藤研究室、Sidon の作者、Meta、Descript、Hugging Face とは関係がなく、承認・推奨を受けていません。
-      本アプリは無保証です。使用によって生じた損害について、URMA Sound は責任を負いません。
-      Sidon の論文には、非商用ライセンスのデータを含む学習データが記載されています。商用目的で使う場合は、ご自身の判断と責任で行ってください。
-      処理する音声の権利は、ご自身で確認してください。人を誤認させる目的で使わないでください。
-      詳しくはアプリ内の「ライセンスと免責事項」をご確認ください。
+<p class="small muted">この<wbr>ほか<wbr> w2v-BERT 2.0<wbr>（Meta, MIT）、<wbr>Descript Audio Codec<wbr>（Descript, MIT）、<wbr>Hugging Face Transformers<wbr>（Apache License 2.0）に<wbr>由来する<wbr>コード・モデルを<wbr>含みます。<wbr>ライセンス全文は<wbr>アプリ内に<wbr>収録しています。</p>
+<p class="small muted">
+      Voice Retrace は<wbr> URMA Sound が<wbr>作成した<wbr>非公式の<wbr>アプリです。<wbr>東京大学 猿渡・齋藤研究室、<wbr>Sidon の<wbr>作者、<wbr>Meta、<wbr>Descript、<wbr>Hugging Face とは<wbr>関係が<wbr>なく、<wbr>承認・推奨を<wbr>受けていません。<wbr>
+      本アプリは<wbr>無保証です。<wbr>使用に<wbr>よって<wbr>生じた<wbr>損害に<wbr>ついて、<wbr>URMA Sound は<wbr>責任を<wbr>負いません。<wbr>
+      Sidon の<wbr>論文には、<wbr>非商用ライセンスの<wbr>データを<wbr>含む<wbr>学習データが<wbr>記載されています。<wbr>商用目的で<wbr>使う<wbr>場合は、<wbr>ご自身の<wbr>判断と<wbr>責任で<wbr>行ってください。<wbr>
+      処理する<wbr>音声の<wbr>権利は、<wbr>ご自身で<wbr>確認してください。<wbr>人を<wbr>誤認させる<wbr>目的で<wbr>使わないでください。<wbr>
+      詳しくは<wbr>アプリ内の<wbr>「ライセンスと<wbr>免責事項」を<wbr>ご確認ください。<wbr>
     </p>
-    <p class="small muted">SHA-256（DMG）: <code data-sha256></code></p>
-  </section>
-
-  <footer>© 2026 URMA Sound ・ <a href="mailto:urmasound.inc@gmail.com">urmasound.inc@gmail.com</a></footer>
+<p class="small muted">SHA-256<wbr>（DMG）<wbr>: <code data-sha256=""></code></p>
+</section>
+<footer>© 2026 URMA Sound ・ <a href="mailto:urmasound.inc@gmail.com">urmasound.inc@gmail.com</a></footer>
 </main>
-
 <script>
   // 公開時にここだけ書き換える
   const CONFIG = {

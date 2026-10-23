@@ -1,11 +1,12 @@
-<!doctype html>
+<!DOCTYPE html>
+
 <html lang="ja">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
 <title>Voice Retrace マニュアル</title>
-<meta name="description" content="Voice Retrace の使い方。インストール、ファイルの入れ方、混ぜ具合の調整、書き出しまで。">
-<meta name="color-scheme" content="dark">
+<meta content="Voice Retrace の使い方。インストール、ファイルの入れ方、混ぜ具合の調整、書き出しまで。" name="description"/>
+<meta content="dark" name="color-scheme"/>
 <style>
   :root {
     --bg: #0e0e0e;
@@ -20,6 +21,7 @@
   * { box-sizing: border-box; }
   html { -webkit-text-size-adjust: 100%; }
   body {
+    word-break: keep-all; overflow-wrap: anywhere; line-break: strict; text-wrap: pretty;
     margin: 0;
     background: var(--bg);
     color: var(--text);
@@ -127,203 +129,185 @@
 </head>
 <body>
 <main>
-  <a class="back" href="./">← Voice Retrace のページへ</a>
-  <h1>Voice Retrace マニュアル</h1>
-  <div class="ver">バージョン 1.0.3</div>
-  <p class="pdf-only small muted" style="margin-top:8px">https://urmasound.github.io/voice-retrace/ ・ URMA Sound</p>
-  <a class="pdf-link" href="VoiceRetrace-1.0.3-manual.pdf" download>⬇ このマニュアルを PDF でダウンロード</a>
-
-  <nav class="toc">
-    <ol>
-      <li><a href="#install">インストール</a></li>
-      <li><a href="#first">初めて開いたとき</a></li>
-      <li><a href="#add">音声ファイルを入れる</a></li>
-      <li><a href="#stereo">ステレオのファイル</a></li>
-      <li><a href="#queue">処理の進み具合・キャンセル・並べ替え</a></li>
-      <li><a href="#player">聴いて、混ぜて、書き出す</a></li>
-      <li><a href="#output">書き出したファイル</a></li>
-      <li><a href="#faq">うまくいかないとき</a></li>
-    </ol>
-  </nav>
-
-  <section id="install">
-    <h2><span class="no">1</span>インストール</h2>
-    <p class="small muted">必要なもの: Apple Silicon（M1 以降）の Mac、macOS 15 以降、空き容量 約 1GB</p>
-    <ol>
-      <li>配布ページから DMG（<b>VoiceRetrace-1.0.3.dmg</b>）をダウンロードして、ダブルクリックで開きます。</li>
-      <li>開いたウィンドウの中の「Voice Retrace」を、となりの「Applications」フォルダにドラッグします。</li>
-      <li>アプリケーションフォルダから「Voice Retrace」を開きます。初回は「インターネットからダウンロードされたアプリケーションです。開いてもよろしいですか？」と確認されるので、<b>「開く」</b>を押します。</li>
-    </ol>
-    <p class="small muted">DMG の中から直接開かず、必ず Applications フォルダに移してから使ってください（DMG の中から開くと、移すよう案内が出ます）。移したあとの DMG は、Finder のサイドバーで取り出してかまいません。</p>
-    <div class="note">
-      <b>初めて開いたときは「準備中…」と表示されます。</b>音声修復のモデルを、お使いの Mac に合わせて準備しています（ネットへの接続は不要です）。数秒〜数十秒で「音声ファイルをドロップしてください」に変わります。2回目からはすぐ使えます。macOS を更新したあとは、もう一度だけ準備をし直します。
+<a class="back" href="./">← Voice Retrace の<wbr>ページへ</a>
+<h1>Voice Retrace マニュアル</h1>
+<div class="ver">バージョン 1.0.3</div>
+<p class="pdf-only small muted" style="margin-top:8px">https://urmasound.github.io/voice-retrace/ ・ URMA Sound</p>
+<a class="pdf-link" download="" href="VoiceRetrace-1.0.3-manual.pdf">⬇ この<wbr>マニュアルを<wbr> PDF で<wbr>ダウンロード</a>
+<nav class="toc">
+<ol>
+<li><a href="#install">インストール</a></li>
+<li><a href="#first">初めて<wbr>開いた<wbr>とき</a></li>
+<li><a href="#add">音声ファイルを<wbr>入れる</a></li>
+<li><a href="#stereo">ステレオの<wbr>ファイル</a></li>
+<li><a href="#queue">処理の<wbr>進み具合・キャンセル・<wbr>並べ替え</a></li>
+<li><a href="#player">聴いて、<wbr>混ぜて、<wbr>書き出す</a></li>
+<li><a href="#output">書き出した<wbr>ファイル</a></li>
+<li><a href="#faq">うまく<wbr>いかない<wbr>とき</a></li>
+</ol>
+</nav>
+<section id="install">
+<h2><span class="no">1</span>インストール</h2>
+<p class="small muted">必要な<wbr>もの<wbr>: Apple Silicon<wbr>（M1 以降）の<wbr> Mac、<wbr>macOS 15 以降、<wbr>空き容量 約 1GB</p>
+<ol>
+<li>配布ページから<wbr> DMG<wbr>（<b>VoiceRetrace-1.0.3.dmg</b>）を<wbr>ダウンロードして、<wbr>ダブルクリックで<wbr>開きます。</li>
+<li>開いた<wbr>ウィンドウの<wbr>中の<wbr>「Voice Retrace」を、となりの<wbr>「Applications」フォルダに<wbr>ドラッグします。</li>
+<li>アプリケーションフォルダから<wbr>「Voice Retrace」を<wbr>開きます。<wbr>初回は<wbr>「インターネットから<wbr>ダウンロードされた<wbr>アプリケーションです。<wbr>開いても<wbr>よろしいですか？」と<wbr>確認されるので、<b>「開く」</b>を<wbr>押します。</li>
+</ol>
+<p class="small muted">DMG の<wbr>中から<wbr>直接開かず、<wbr>必ず<wbr> Applications フォルダに<wbr>移してから<wbr>使ってください<wbr>（DMG の<wbr>中から<wbr>開くと、<wbr>移すよう<wbr>案内が<wbr>出ます）。<wbr>移した<wbr>あとの<wbr> DMG は、<wbr>Finder の<wbr>サイドバーで<wbr>取り出してかまいません。</p>
+<div class="note">
+<b>初めて<wbr>開いた<wbr>ときは<wbr>「準備中…」と<wbr>表示されます。</b>音声修復の<wbr>モデルを、<wbr>お使いの<wbr> Mac に<wbr>合わせて<wbr>準備しています<wbr>（ネットへの<wbr>接続は<wbr>不要です）。<wbr>数秒〜数十秒で<wbr>「音声ファイルを<wbr>ドロップしてください」に<wbr>変わります。<wbr>2回目からは<wbr>すぐ<wbr>使えます。<wbr>macOS を<wbr>更新した<wbr>あとは、<wbr>もう<wbr>一度だけ準備を<wbr>し直します。<wbr>
     </div>
-  </section>
-
-  <section id="first">
-    <h2><span class="no">2</span>初めて開いたとき</h2>
-    <p>最初に「ライセンスと免責事項」が表示されます。</p>
-    <figure>
-      <div class="shot">
-        <img src="manual/02-legal.png" alt="ライセンスと免責事項の画面" width="1280" height="1120">
-        <span class="pin" style="left:90.5%;top:89.8%">1</span>
-        <span class="pin" style="left:72.7%;top:89.8%">2</span>
-      </div>
-    </figure>
-    <ol class="pins">
-      <li><b>同意して使う</b> … 内容を確認し、同意する場合に押します。次からは表示されません。</li>
-      <li><b>同意しない（終了）</b> … アプリを終了します。</li>
-    </ol>
-    <p class="small muted">あとから読み返すときは、メニューの「Voice Retrace」→「ライセンスと免責事項…」を選びます。</p>
-  </section>
-
-  <section id="add">
-    <h2><span class="no">3</span>音声ファイルを入れる</h2>
-    <figure>
-      <div class="shot">
-        <img src="manual/01-start.png" alt="起動直後の画面" width="1280" height="1200">
-        <span class="pin" style="left:43.8%;top:12.5%">1</span>
-        <span class="pin" style="left:39%;top:21.8%">2</span>
-        <span class="pin" style="left:59.4%;top:93%">3</span>
-        <span class="pin" style="left:89.8%;top:93%">4</span>
-      </div>
-    </figure>
-    <ol class="pins">
-      <li><b>ここにドロップ</b> … 音声ファイルやフォルダを、Finder からウィンドウにドラッグします。ウィンドウのどこに落としても大丈夫です。複数まとめて入れられます。</li>
-      <li><b>ファイルを選ぶ…</b> … ドラッグの代わりに、ファイルを選んで入れることもできます。</li>
-      <li><b>☕ 支援する</b> … Ko-fi のページが開きます（任意。支援してもしなくても機能は同じです）。</li>
-      <li><b>ライセンスと免責事項</b> … いつでも読み返せます。</li>
-    </ol>
-    <div class="note">
-      <b>入れられるファイル</b>: wav / aiff / flac / mp3 / m4a / caf<br>
-      フォルダを入れた場合は、その中の音声ファイルだけが処理されます（中のフォルダまでは見ません）。<br>
-      <b>得意なのは話し声</b>です。音楽・歌・楽器・効果音は、消えたり崩れたりします。
+</section>
+<section id="first">
+<h2><span class="no">2</span>初めて<wbr>開いた<wbr>とき</h2>
+<p>最初に<wbr>「ライセンスと<wbr>免責事項」が<wbr>表示されます。</p>
+<figure>
+<div class="shot">
+<img alt="ライセンスと免責事項の画面" height="1120" src="manual/02-legal.png" width="1280"/>
+<span class="pin" style="left:90.5%;top:89.8%">1</span>
+<span class="pin" style="left:72.7%;top:89.8%">2</span>
+</div>
+</figure>
+<ol class="pins">
+<li><b>同意して<wbr>使う</b> …<wbr> 内容を<wbr>確認し、<wbr>同意する<wbr>場合に<wbr>押します。<wbr>次からは<wbr>表示されません。</li>
+<li><b>同意しない<wbr>（終了）</b> …<wbr> アプリを<wbr>終了します。</li>
+</ol>
+<p class="small muted">あとから<wbr>読み返す<wbr>ときは、<wbr>メニューの<wbr>「Voice Retrace」<wbr>→<wbr>「ライセンスと<wbr>免責事項…」を<wbr>選びます。</p>
+</section>
+<section id="add">
+<h2><span class="no">3</span>音声ファイルを<wbr>入れる</h2>
+<figure>
+<div class="shot">
+<img alt="起動直後の画面" height="1200" src="manual/01-start.png" width="1280"/>
+<span class="pin" style="left:43.8%;top:12.5%">1</span>
+<span class="pin" style="left:39%;top:21.8%">2</span>
+<span class="pin" style="left:59.4%;top:93%">3</span>
+<span class="pin" style="left:89.8%;top:93%">4</span>
+</div>
+</figure>
+<ol class="pins">
+<li><b>ここに<wbr>ドロップ</b> …<wbr> 音声ファイルや<wbr>フォルダを、<wbr>Finder から<wbr>ウィンドウに<wbr>ドラッグします。<wbr>ウィンドウの<wbr>どこに<wbr>落としても<wbr>大丈夫です。<wbr>複数まとめて<wbr>入れられます。</li>
+<li><b>ファイルを<wbr>選ぶ…</b> …<wbr> ドラッグの<wbr>代わりに、<wbr>ファイルを<wbr>選んで<wbr>入れる<wbr>こともできます。</li>
+<li><b>☕ 支援する</b> …<wbr> Ko-fi の<wbr>ページが<wbr>開きます<wbr>（任意。<wbr>支援してもしなくても<wbr>機能は<wbr>同じです）。</li>
+<li><b>ライセンスと<wbr>免責事項</b> …<wbr> いつでも<wbr>読み返せます。</li>
+</ol>
+<div class="note">
+<b>入れられる<wbr>ファイル</b>: wav / aiff / flac / mp3 / m4a / caf<br/>
+      フォルダを<wbr>入れた<wbr>場合は、<wbr>その<wbr>中の<wbr>音声ファイルだけが<wbr>処理されます<wbr>（中の<wbr>フォルダまでは<wbr>見ません）。<br/>
+<b>得意なのは<wbr>話し声</b>です。<wbr>音楽・歌・楽器・効果音は、<wbr>消えたり崩れたりします。<wbr>
     </div>
-  </section>
-
-  <section id="stereo">
-    <h2><span class="no">4</span>ステレオのファイル</h2>
-    <p>Voice Retrace はモノラルで処理します。ステレオ（2ch 以上）のファイルを入れると、モノラルにまとめる方法を確認する画面が出ます。</p>
-    <figure>
-      <div class="shot" style="max-width:360px;margin:0 auto">
-        <img src="manual/05-stereo.png" alt="ステレオのファイルの確認画面" width="704" height="858">
-      </div>
-    </figure>
-    <table>
-      <tr><th>自動（おすすめ）</th><td>ファイルごとに判断します。左右が逆相のものは右を反転してから、片側にしか音がないものは音のあるほうだけを使い、それ以外は左右をまとめます</td></tr>
-      <tr><th>左右をまとめる</th><td>左と右を足して半分にします</td></tr>
-      <tr><th>右を反転してまとめる</th><td>右の位相を反転してから左と足します。配線ミスなどで左右が逆相になっている素材向けです（そのまままとめると打ち消し合って無音になります）</td></tr>
-      <tr><th>左だけ／右だけ</th><td>片方のチャンネルだけを使います。片側にだけ声が入っている素材向けです</td></tr>
-    </table>
-    <p class="small muted">逆相・片側だけ・左右で音がかなり違う（まとめると音が薄くなることがある）ファイルは、確認画面にファイル名を出して知らせます。判定にはファイルの最初の2分間を使います。<br>
-    気になる点がないときは「今後このメッセージを表示しない」を選べます（以後は「自動」で処理します）。逆相などが見つかったときは、この設定でも表示します。<br>
-    処理待ちの一覧では、ファイル名の横に「ステレオ→モノラル（右を反転）」のように、まとめ方を表示します。</p>
-  </section>
-
-  <section id="queue">
-    <h2><span class="no">5</span>処理の進み具合・キャンセル・並べ替え</h2>
-    <p>入れたファイルは、上から順番に1つずつ処理されます。</p>
-    <figure>
-      <div class="shot">
-        <img src="manual/03-queue.png" alt="処理中と処理待ちの一覧" width="1280" height="1200">
-        <span class="pin" style="left:58.6%;top:36.2%">1</span>
-        <span class="pin" style="left:97.6%;top:36.2%">2</span>
-        <span class="pin" style="left:3.4%;top:42.3%">3</span>
-        <span class="pin" style="left:80.5%;top:30%">4</span>
-        <span class="pin" style="left:3.4%;top:56.4%">5</span>
-      </div>
-    </figure>
-    <ol class="pins">
-      <li><b>処理中のファイル</b> … いちばん上に表示され、残り時間の目安と進み具合のバーが出ます。</li>
-      <li><b>× ボタン</b> … 処理中のファイルはその場で止め、待っているファイルは処理待ちから外します。止めたファイルは「完了」の欄に「キャンセル」として残ります。</li>
-      <li><b>処理待ちのファイル</b> … ドラッグで順番を入れ替えられます。<b>処理中のファイルの上には入れられません</b>。先に処理したいファイルがあるときは、処理中のファイルを × で止めてください。</li>
-      <li><b>全体の残り</b> … 処理待ちも含めた、終わるまでの時間の目安です。使ううちに、お使いの Mac に合わせて正確になります。</li>
-      <li><b>完了</b> … 終わったファイルがここに並びます。選ぶと、下に再生パネルが出ます。</li>
-    </ol>
-    <div class="note">
-      <b>かかる時間の目安</b>: M5 Pro で、3分の音声が約8秒です。古い機種ほど時間がかかります。<br>
-      キャンセルやエラーになったファイルは、右クリック →「もう一度処理する」で処理待ちの最後に戻せます。<br>
-      右クリックからは「Finder で表示」「リストから削除」もできます。
+</section>
+<section id="stereo">
+<h2><span class="no">4</span>ステレオの<wbr>ファイル</h2>
+<p>Voice Retrace は<wbr>モノラルで<wbr>処理します。<wbr>ステレオ<wbr>（2ch 以上）の<wbr>ファイルを<wbr>入れると、<wbr>モノラルに<wbr>まとめる<wbr>方法を<wbr>確認する<wbr>画面が<wbr>出ます。</p>
+<figure>
+<div class="shot" style="max-width:360px;margin:0 auto">
+<img alt="ステレオのファイルの確認画面" height="858" src="manual/05-stereo.png" width="704"/>
+</div>
+</figure>
+<table>
+<tr><th>自動<wbr>（おすすめ）</th><td>ファイルごとに<wbr>判断します。<wbr>左右が<wbr>逆相の<wbr>ものは<wbr>右を<wbr>反転してから、<wbr>片側にしか<wbr>音が<wbr>ない<wbr>ものは<wbr>音の<wbr>ある<wbr>ほうだけを<wbr>使い、<wbr>それ以外は<wbr>左右を<wbr>まとめます</td></tr>
+<tr><th>左右を<wbr>まとめる</th><td>左と<wbr>右を<wbr>足して<wbr>半分に<wbr>します</td></tr>
+<tr><th>右を<wbr>反転して<wbr>まとめる</th><td>右の<wbr>位相を<wbr>反転してから<wbr>左と<wbr>足します。<wbr>配線ミスなどで<wbr>左右が<wbr>逆相に<wbr>なっている<wbr>素材向けです<wbr>（<wbr>そのまま<wbr>まとめると<wbr>打ち消し合って<wbr>無音に<wbr>なります）</td></tr>
+<tr><th>左だけ／右だけ</th><td>片方の<wbr>チャンネルだけを<wbr>使います。<wbr>片側にだけ声が<wbr>入っている<wbr>素材向けです</td></tr>
+</table>
+<p class="small muted">逆相・片側だけ・左右で<wbr>音が<wbr>かなり<wbr>違う<wbr>（まとめると<wbr>音が<wbr>薄くなることがある）<wbr>ファイルは、<wbr>確認画面に<wbr>ファイル名を<wbr>出して<wbr>知らせます。<wbr>判定には<wbr>ファイルの<wbr>最初の<wbr>2分間を<wbr>使います。<br/>
+    気に<wbr>なる<wbr>点が<wbr>ない<wbr>ときは<wbr>「今後<wbr>この<wbr>メッセージを<wbr>表示しない」を<wbr>選べます<wbr>（以後は<wbr>「自動」で<wbr>処理します）。<wbr>逆相などが<wbr>見つかった<wbr>ときは、<wbr>この<wbr>設定でも<wbr>表示します。<br/>
+    処理待ちの<wbr>一覧では、<wbr>ファイル名の<wbr>横に<wbr>「ステレオ→モノラル<wbr>（右を<wbr>反転）」のように、<wbr>まとめ方を<wbr>表示します。</p>
+</section>
+<section id="queue">
+<h2><span class="no">5</span>処理の<wbr>進み具合・キャンセル・<wbr>並べ替え</h2>
+<p>入れた<wbr>ファイルは、<wbr>上から<wbr>順番に<wbr>1つずつ<wbr>処理されます。</p>
+<figure>
+<div class="shot">
+<img alt="処理中と処理待ちの一覧" height="1200" src="manual/03-queue.png" width="1280"/>
+<span class="pin" style="left:58.6%;top:36.2%">1</span>
+<span class="pin" style="left:97.6%;top:36.2%">2</span>
+<span class="pin" style="left:3.4%;top:42.3%">3</span>
+<span class="pin" style="left:80.5%;top:30%">4</span>
+<span class="pin" style="left:3.4%;top:56.4%">5</span>
+</div>
+</figure>
+<ol class="pins">
+<li><b>処理中の<wbr>ファイル</b> …<wbr> いちばん上に<wbr>表示され、<wbr>残り<wbr>時間の<wbr>目安と<wbr>進み具合の<wbr>バーが<wbr>出ます。</li>
+<li><b>× ボタン</b> …<wbr> 処理中の<wbr>ファイルは<wbr>その<wbr>場で<wbr>止め、<wbr>待っている<wbr>ファイルは<wbr>処理待ちから<wbr>外します。<wbr>止めた<wbr>ファイルは<wbr>「完了」の<wbr>欄に<wbr>「キャンセル」と<wbr>して<wbr>残ります。</li>
+<li><b>処理待ちの<wbr>ファイル</b> …<wbr> ドラッグで<wbr>順番を<wbr>入れ替えられます。<b>処理中の<wbr>ファイルの<wbr>上には<wbr>入れられません</b>。<wbr>先に<wbr>処理したい<wbr>ファイルが<wbr>ある<wbr>ときは、<wbr>処理中の<wbr>ファイルを<wbr> × で<wbr>止めてください。</li>
+<li><b>全体の<wbr>残り</b> …<wbr> 処理待ちも<wbr>含めた、<wbr>終わるまでの<wbr>時間の<wbr>目安です。<wbr>使ううちに、<wbr>お使いの<wbr> Mac に<wbr>合わせて<wbr>正確に<wbr>なります。</li>
+<li><b>完了</b> …<wbr> 終わった<wbr>ファイルが<wbr>ここに<wbr>並びます。<wbr>選ぶと、<wbr>下に<wbr>再生パネルが<wbr>出ます。</li>
+</ol>
+<div class="note">
+<b>かかる<wbr>時間の<wbr>目安</b>: M5 Pro で、<wbr>3分の<wbr>音声が<wbr>約8秒です。<wbr>古い<wbr>機種ほど<wbr>時間が<wbr>かかります。<br/>
+      キャンセルや<wbr>エラーに<wbr>なった<wbr>ファイルは、<wbr>右クリック →<wbr>「もう<wbr>一度<wbr>処理する」で<wbr>処理待ちの<wbr>最後に<wbr>戻せます。<br/>
+      右クリックからは<wbr>「Finder で<wbr>表示」<wbr>「リストから<wbr>削除」も<wbr>できます。<wbr>
     </div>
-  </section>
-
-  <section id="player">
-    <h2><span class="no">6</span>聴いて、混ぜて、書き出す</h2>
-    <figure>
-      <div class="shot">
-        <img src="manual/04-player.png" alt="再生と書き出しのパネル" width="1280" height="1200">
-        <span class="pin" style="left:3.4%;top:36.1%">1</span>
-        <span class="pin" style="left:2.4%;top:77.7%">2</span>
-        <span class="pin" style="left:40%;top:74.5%">3</span>
-        <span class="pin" style="left:54.7%;top:80.4%">4</span>
-        <span class="pin" style="left:2.4%;top:89.1%">5</span>
-        <span class="pin" style="left:69.9%;top:85.6%">6</span>
-        <span class="pin" style="left:90.9%;top:85.6%">7</span>
-      </div>
-    </figure>
-    <ol class="pins">
-      <li><b>完了したファイルを選ぶ</b> … 選んだファイルが、下のパネルで再生できるようになります。</li>
-      <li><b>再生・一時停止</b> … スペースキーでも操作できます。</li>
-      <li><b>再生位置</b> … ドラッグして、聴きたいところへ移動します。</li>
-      <li><b>バランス</b> … 右端（100%）が Sidon で修復した音、左端（0%）が修正前の音です。<b>再生しながら動かすと、その場で音が変わります</b>。</li>
-      <li><b>0% / 50% / 100%</b> … バランスをすぐその値にします。修正前と修復後を聴き比べるときに便利です。</li>
-      <li><b>書き出し形式</b> … サンプルレート（48k / 44.1k）とビット深度（24bit / 16bit）を選びます。選んだ設定は次回も覚えています。</li>
-      <li><b>書き出し…</b> … 今のバランスと形式で WAV を保存します。保存先とファイル名を確認して「保存」を押します。</li>
-    </ol>
-    <div class="note">
-      Sidon は、ノイズを差し引くのではなく、声の特徴から音声を<b>作り直します</b>。そのため、修正前の音を多く混ぜると、2人が同時に話しているように<b>にじんで聞こえることがあります</b>。耳で聴きながら、ちょうどいいところを探してください。
+</section>
+<section id="player">
+<h2><span class="no">6</span>聴いて、<wbr>混ぜて、<wbr>書き出す</h2>
+<figure>
+<div class="shot">
+<img alt="再生と書き出しのパネル" height="1200" src="manual/04-player.png" width="1280"/>
+<span class="pin" style="left:3.4%;top:36.1%">1</span>
+<span class="pin" style="left:2.4%;top:77.7%">2</span>
+<span class="pin" style="left:40%;top:74.5%">3</span>
+<span class="pin" style="left:54.7%;top:80.4%">4</span>
+<span class="pin" style="left:2.4%;top:89.1%">5</span>
+<span class="pin" style="left:69.9%;top:85.6%">6</span>
+<span class="pin" style="left:90.9%;top:85.6%">7</span>
+</div>
+</figure>
+<ol class="pins">
+<li><b>完了した<wbr>ファイルを<wbr>選ぶ</b> …<wbr> 選んだ<wbr>ファイルが、<wbr>下の<wbr>パネルで<wbr>再生できるようになります。</li>
+<li><b>再生・<wbr>一時停止</b> …<wbr> スペースキーでも<wbr>操作できます。</li>
+<li><b>再生位置</b> …<wbr> ドラッグして、<wbr>聴きたい<wbr>ところへ<wbr>移動します。</li>
+<li><b>バランス</b> …<wbr> 右端<wbr>（100%）が<wbr> Sidon で<wbr>修復した<wbr>音、<wbr>左端<wbr>（0%）が<wbr>修正前の<wbr>音です。<b>再生しながら<wbr>動かすと、<wbr>その<wbr>場で<wbr>音が<wbr>変わります</b>。</li>
+<li><b>0% / 50% / 100%</b> …<wbr> バランスを<wbr>すぐ<wbr>その<wbr>値に<wbr>します。<wbr>修正前と<wbr>修復後を<wbr>聴き<wbr>比べる<wbr>ときに<wbr>便利です。</li>
+<li><b>書き出し形式</b> …<wbr> サンプルレート<wbr>（48k / 44.1k）と<wbr>ビット深度<wbr>（24bit / 16bit）を<wbr>選びます。<wbr>選んだ<wbr>設定は<wbr>次回も<wbr>覚えています。</li>
+<li><b>書き出し…</b> …<wbr> 今の<wbr>バランスと<wbr>形式で<wbr> WAV を<wbr>保存します。<wbr>保存先と<wbr>ファイル名を<wbr>確認して<wbr>「保存」を<wbr>押します。</li>
+</ol>
+<div class="note">
+      Sidon は、<wbr>ノイズを<wbr>差し引くのではなく、<wbr>声の<wbr>特徴から<wbr>音声を<b>作り直します</b>。<wbr>その<wbr>ため、<wbr>修正前の<wbr>音を<wbr>多く<wbr>混ぜると、<wbr>2人が<wbr>同時に<wbr>話しているように<b>に<wbr>じんで<wbr>聞こえる<wbr>ことがあります</b>。<wbr>耳で<wbr>聴きながら、<wbr>ちょうど<wbr>いい<wbr>ところを<wbr>探してください。<wbr>
     </div>
-  </section>
-
-  <section id="output">
-    <h2><span class="no">7</span>書き出したファイル</h2>
-    <table>
-      <tr><th>保存先</th><td>初期値は、元のファイルと同じフォルダです（保存の画面で変えられます）</td></tr>
-      <tr><th>ファイル名</th><td>バランス 100% のとき <code>元の名前_retrace.wav</code><br>それ以外は <code>元の名前_retrace_mix85.wav</code> のように、バランスの値が入ります</td></tr>
-      <tr><th>形式</th><td>WAV・モノラル。48kHz / 44.1kHz、24bit / 16bit から選択（16bit のときはディザをかけています）</td></tr>
-      <tr><th>長さ・位置</th><td>元のファイルと同じ長さです。DAW で元の音と頭をそろえて並べると、位置もぴったり合います</td></tr>
-      <tr><th>元のファイル</th><td>書き換えません</td></tr>
-    </table>
-    <p class="small muted">ステレオのファイルは、<a href="#stereo">選んだ方法</a>でモノラルにまとめて処理します。音量は、処理の前に一番大きいところが約 −1dB になるようそろえます。</p>
-  </section>
-
-  <section id="faq">
-    <h2><span class="no">8</span>うまくいかないとき</h2>
-    <dl class="faq">
-      <dt>アプリが開けない</dt>
-      <dd>Apple Silicon（M1 以降）の Mac と macOS 15 以降が必要です。Intel の Mac では動きません。空き容量が 1GB ほど必要です。会社や学校などで管理されている Mac では、管理者の設定で開けないことがあります。</dd>
-
-      <dt>「準備中…」のまま進まない・応答しない</dt>
-      <dd>初めて開いたときの準備は、ふつう数秒〜数十秒で終わります。数分たっても変わらないときは、アプリを終了してから開き直してください。それでも同じときは、下の「ログ」を送ってください。</dd>
-
-      <dt>不具合を報告したい（ログ）</dt>
-      <dd>メニューの「Voice Retrace」→「ログを Finder で表示」を選ぶと、動作の記録（<code>voiceretrace.log</code>）が表示されます。このファイルを添えて連絡していただけると、原因を調べやすくなります。音声の中身は記録されません（記録されるのは、Mac の機種と macOS のバージョン、アプリの場所、処理したファイルの名前と長さ、処理時間、使ったメモリなどです）。</dd>
-
-      <dt>一覧に「エラー」と出た</dt>
-      <dd>「エラー」の文字にマウスを乗せると、理由が表示されます。音声ファイルが壊れている、対応していない形式、などが考えられます。別の形式（wav など）に書き出し直してから入れてみてください。</dd>
-
-      <dt>「音声ファイルが見つかりませんでした」と出た</dt>
-      <dd>入れたファイルが対応形式（wav / aiff / flac / mp3 / m4a / caf）ではないか、フォルダの中に音声ファイルがありません。DAW の波形キャッシュなどは処理されません。</dd>
-
-      <dt>処理に時間がかかる</dt>
-      <dd>古い機種ほど時間がかかります。長いファイルは、処理待ちのうちに順番を入れ替えて、急ぐものを先にしてください。</dd>
-
-      <dt>声がにじむ・二重に聞こえる</dt>
-      <dd>バランスを 100%（Sidon 側）に近づけてください。修正前の音を混ぜるほど、にじみやすくなります。</dd>
-
-      <dt>音楽や効果音が消えた・崩れた</dt>
-      <dd>Sidon は話し声専用です。声以外の音は消えたり崩れたりします。声だけのトラックに使うのがおすすめです。</dd>
-
-      <dt>アンインストールしたい</dt>
-      <dd>アプリケーションフォルダの「Voice Retrace」をゴミ箱に入れてください。設定も消す場合は、ターミナルで <code>defaults delete jp.urmasound.voiceretrace</code> を実行します。</dd>
-    </dl>
-    <p class="small muted" style="margin-top:28px">解決しないときは <a href="mailto:urmasound.inc@gmail.com">urmasound.inc@gmail.com</a> までご連絡ください。お使いの Mac の機種と macOS のバージョン、画面のスクリーンショットがあると助かります（対応はできる範囲で行います）。</p>
-  </section>
-
-  <footer>
-    <div><a href="./">Voice Retrace のページへ戻る</a></div>
-    <div style="margin-top:8px">© 2026 URMA Sound</div>
-  </footer>
+</section>
+<section id="output">
+<h2><span class="no">7</span>書き出した<wbr>ファイル</h2>
+<table>
+<tr><th>保存先</th><td>初期値は、<wbr>元の<wbr>ファイルと<wbr>同じ<wbr>フォルダです<wbr>（保存の<wbr>画面で<wbr>変えられます）</td></tr>
+<tr><th>ファイル名</th><td>バランス 100% の<wbr>とき <code>元の名前_retrace.wav</code><br/>それ以外は<wbr> <code>元の名前_retrace_mix85.wav</code> のように、<wbr>バランスの<wbr>値が<wbr>入ります</td></tr>
+<tr><th>形式</th><td>WAV・モノラル。<wbr>48kHz / 44.1kHz、<wbr>24bit / 16bit から<wbr>選択<wbr>（16bit の<wbr>ときは<wbr>ディザを<wbr>かけています）</td></tr>
+<tr><th>長さ・<wbr>位置</th><td>元の<wbr>ファイルと<wbr>同じ<wbr>長さです。<wbr>DAW で<wbr>元の<wbr>音と<wbr>頭を<wbr>そろえて<wbr>並べると、<wbr>位置も<wbr>ぴったり合います</td></tr>
+<tr><th>元の<wbr>ファイル</th><td>書き換えません</td></tr>
+</table>
+<p class="small muted">ステレオの<wbr>ファイルは、<a href="#stereo">選んだ<wbr>方<wbr>法</a>で<wbr>モノラルに<wbr>まとめて<wbr>処理します。<wbr>音量は、<wbr>処理の<wbr>前に<wbr>一番<wbr>大きい<wbr>ところが<wbr>約 −1dB に<wbr>なるよう<wbr>そろえます。</p>
+</section>
+<section id="faq">
+<h2><span class="no">8</span>うまく<wbr>いかない<wbr>とき</h2>
+<dl class="faq">
+<dt>アプリが<wbr>開けない</dt>
+<dd>Apple Silicon<wbr>（M1 以降）の<wbr> Mac と<wbr> macOS 15 以降が<wbr>必要です。<wbr>Intel の<wbr> Mac では<wbr>動きません。<wbr>空き容量が<wbr> 1GB ほど<wbr>必要です。<wbr>会社や<wbr>学校などで<wbr>管理されている<wbr> Mac では、<wbr>管理者の<wbr>設定で<wbr>開けない<wbr>ことがあります。</dd>
+<dt>「準備中…」の<wbr>まま<wbr>進まない・応答しない</dt>
+<dd>初めて<wbr>開いた<wbr>ときの<wbr>準備は、<wbr>ふつう<wbr>数秒〜数十秒で<wbr>終わります。<wbr>数分たっても<wbr>変わらない<wbr>ときは、<wbr>アプリを<wbr>終了してから<wbr>開き直してください。<wbr>それでも<wbr>同じ<wbr>ときは、<wbr>下の<wbr>「ログ」を<wbr>送ってください。</dd>
+<dt>不具合を<wbr>報告したい<wbr>（ログ）</dt>
+<dd>メニューの<wbr>「Voice Retrace」<wbr>→<wbr>「ログを<wbr> Finder で<wbr>表示」を<wbr>選ぶと、<wbr>動作の<wbr>記録<wbr>（<code>voiceretrace.log</code>）が<wbr>表示されます。<wbr>この<wbr>ファイルを<wbr>添えて<wbr>連絡していただけると、<wbr>原因を<wbr>調べやすくなります。<wbr>音声の<wbr>中身は<wbr>記録されません<wbr>（記録されるのは、<wbr>Mac の<wbr>機種と<wbr> macOS の<wbr>バージョン、<wbr>アプリの<wbr>場所、<wbr>処理した<wbr>ファイルの<wbr>名前と<wbr>長さ、<wbr>処理時間、<wbr>使った<wbr>メモリなどです）。</dd>
+<dt>一覧に<wbr>「エラー」と<wbr>出た</dt>
+<dd>「エラー」の<wbr>文字に<wbr>マウスを<wbr>乗せると、<wbr>理由が<wbr>表示されます。<wbr>音声ファイルが<wbr>壊れている、<wbr>対応していない<wbr>形式、<wbr>などが<wbr>考えられます。<wbr>別の<wbr>形式<wbr>（wav など）に<wbr>書き出し直してから<wbr>入れてみてください。</dd>
+<dt>「音声ファイルが<wbr>見つかりませんでした」と<wbr>出た</dt>
+<dd>入れた<wbr>ファイルが<wbr>対応形式<wbr>（wav / aiff / flac / mp3 / m4a / caf）ではないか、<wbr>フォルダの<wbr>中に<wbr>音声ファイルが<wbr>ありません。<wbr>DAW の<wbr>波形キャッシュなどは<wbr>処理されません。</dd>
+<dt>処理に<wbr>時間が<wbr>かかる</dt>
+<dd>古い<wbr>機種ほど<wbr>時間が<wbr>かかります。<wbr>長い<wbr>ファイルは、<wbr>処理待ちの<wbr>うちに<wbr>順番を<wbr>入れ替えて、<wbr>急ぐ<wbr>ものを<wbr>先に<wbr>してください。</dd>
+<dt>声がにじむ・<wbr>二重に<wbr>聞こえる</dt>
+<dd>バランスを<wbr> 100%<wbr>（Sidon 側）に<wbr>近づけてください。<wbr>修正前の<wbr>音を<wbr>混ぜる<wbr>ほど、<wbr>にじみやすくなります。</dd>
+<dt>音楽や<wbr>効果音が<wbr>消えた・崩れた</dt>
+<dd>Sidon は<wbr>話し声専用です。<wbr>声以外の<wbr>音は<wbr>消えたり崩れたりします。<wbr>声だけの<wbr>トラックに<wbr>使うのが<wbr>おすすめです。</dd>
+<dt>アンインストールしたい</dt>
+<dd>アプリケーションフォルダの<wbr>「Voice Retrace」を<wbr>ゴミ箱に<wbr>入れてください。<wbr>設定も<wbr>消す<wbr>場合は、<wbr>ターミナルで<wbr> <code>defaults delete jp.urmasound.voiceretrace</code> を<wbr>実行します。</dd>
+</dl>
+<p class="small muted" style="margin-top:28px">解決しない<wbr>ときは<wbr> <a href="mailto:urmasound.inc@gmail.com">urmasound.inc@gmail.com</a> まで<wbr>ご連絡ください。<wbr>お使いの<wbr> Mac の<wbr>機種と<wbr> macOS の<wbr>バージョン、<wbr>画面の<wbr>スクリーンショットが<wbr>あると<wbr>助かります<wbr>（対応は<wbr>できる<wbr>範囲で<wbr>行います）。</p>
+</section>
+<footer>
+<div><a href="./">Voice Retrace の<wbr>ページへ<wbr>戻る</a></div>
+<div style="margin-top:8px">© 2026 URMA Sound</div>
+</footer>
 </main>
 </body>
 </html>
