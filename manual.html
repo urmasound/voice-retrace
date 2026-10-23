@@ -89,7 +89,7 @@
   .note b { font-weight: 600; }
   table { width: 100%; border-collapse: collapse; font-size: 14px; margin: 0 0 16px; }
   th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
-  th { color: var(--muted); font-weight: 500; }
+  th { color: var(--muted); font-weight: 500; white-space: nowrap; }
   dl.faq dt { font-weight: 600; margin-top: 20px; }
   dl.faq dd { margin: 6px 0 0; color: var(--muted); font-size: 14px; }
   footer { margin-top: 72px; text-align: center; color: var(--faint); font-size: 12px; }
@@ -129,15 +129,16 @@
 <main>
   <a class="back" href="./">← Voice Retrace のページへ</a>
   <h1>Voice Retrace マニュアル</h1>
-  <div class="ver">バージョン 1.0</div>
+  <div class="ver">バージョン 1.0.3</div>
   <p class="pdf-only small muted" style="margin-top:8px">https://urmasound.github.io/voice-retrace/ ・ URMA Sound</p>
-  <a class="pdf-link" href="VoiceRetrace-1.0-manual.pdf" download>⬇ このマニュアルを PDF でダウンロード</a>
+  <a class="pdf-link" href="VoiceRetrace-1.0.3-manual.pdf" download>⬇ このマニュアルを PDF でダウンロード</a>
 
   <nav class="toc">
     <ol>
       <li><a href="#install">インストール</a></li>
       <li><a href="#first">初めて開いたとき</a></li>
       <li><a href="#add">音声ファイルを入れる</a></li>
+      <li><a href="#stereo">ステレオのファイル</a></li>
       <li><a href="#queue">処理の進み具合・キャンセル・並べ替え</a></li>
       <li><a href="#player">聴いて、混ぜて、書き出す</a></li>
       <li><a href="#output">書き出したファイル</a></li>
@@ -147,13 +148,16 @@
 
   <section id="install">
     <h2><span class="no">1</span>インストール</h2>
-    <p class="small muted">必要なもの: Apple Silicon（M1 以降）の Mac、macOS 15 以降、空き容量 約 500MB</p>
+    <p class="small muted">必要なもの: Apple Silicon（M1 以降）の Mac、macOS 15 以降、空き容量 約 1GB</p>
     <ol>
-      <li>配布ページから <b>VoiceRetrace-1.0.dmg</b> をダウンロードして、ダブルクリックで開きます。</li>
+      <li>配布ページから DMG（<b>VoiceRetrace-1.0.3.dmg</b>）をダウンロードして、ダブルクリックで開きます。</li>
       <li>開いたウィンドウの中の「Voice Retrace」を、となりの「Applications」フォルダにドラッグします。</li>
       <li>アプリケーションフォルダから「Voice Retrace」を開きます。初回は「インターネットからダウンロードされたアプリケーションです。開いてもよろしいですか？」と確認されるので、<b>「開く」</b>を押します。</li>
     </ol>
-    <p class="small muted">DMG はもう使わないので、Finder のサイドバーで取り出してかまいません。</p>
+    <p class="small muted">DMG の中から直接開かず、必ず Applications フォルダに移してから使ってください（DMG の中から開くと、移すよう案内が出ます）。移したあとの DMG は、Finder のサイドバーで取り出してかまいません。</p>
+    <div class="note">
+      <b>初めて開いたときは「準備中…」と表示されます。</b>音声修復のモデルを、お使いの Mac に合わせて準備しています（ネットへの接続は不要です）。数秒〜数十秒で「音声ファイルをドロップしてください」に変わります。2回目からはすぐ使えます。macOS を更新したあとは、もう一度だけ準備をし直します。
+    </div>
   </section>
 
   <section id="first">
@@ -197,8 +201,27 @@
     </div>
   </section>
 
+  <section id="stereo">
+    <h2><span class="no">4</span>ステレオのファイル</h2>
+    <p>Voice Retrace はモノラルで処理します。ステレオ（2ch 以上）のファイルを入れると、モノラルにまとめる方法を確認する画面が出ます。</p>
+    <figure>
+      <div class="shot" style="max-width:360px;margin:0 auto">
+        <img src="manual/05-stereo.png" alt="ステレオのファイルの確認画面" width="704" height="858">
+      </div>
+    </figure>
+    <table>
+      <tr><th>自動（おすすめ）</th><td>ファイルごとに判断します。左右が逆相のものは右を反転してから、片側にしか音がないものは音のあるほうだけを使い、それ以外は左右をまとめます</td></tr>
+      <tr><th>左右をまとめる</th><td>左と右を足して半分にします</td></tr>
+      <tr><th>右を反転してまとめる</th><td>右の位相を反転してから左と足します。配線ミスなどで左右が逆相になっている素材向けです（そのまままとめると打ち消し合って無音になります）</td></tr>
+      <tr><th>左だけ／右だけ</th><td>片方のチャンネルだけを使います。片側にだけ声が入っている素材向けです</td></tr>
+    </table>
+    <p class="small muted">逆相・片側だけ・左右で音がかなり違う（まとめると音が薄くなることがある）ファイルは、確認画面にファイル名を出して知らせます。判定にはファイルの最初の2分間を使います。<br>
+    気になる点がないときは「今後このメッセージを表示しない」を選べます（以後は「自動」で処理します）。逆相などが見つかったときは、この設定でも表示します。<br>
+    処理待ちの一覧では、ファイル名の横に「ステレオ→モノラル（右を反転）」のように、まとめ方を表示します。</p>
+  </section>
+
   <section id="queue">
-    <h2><span class="no">4</span>処理の進み具合・キャンセル・並べ替え</h2>
+    <h2><span class="no">5</span>処理の進み具合・キャンセル・並べ替え</h2>
     <p>入れたファイルは、上から順番に1つずつ処理されます。</p>
     <figure>
       <div class="shot">
@@ -225,7 +248,7 @@
   </section>
 
   <section id="player">
-    <h2><span class="no">5</span>聴いて、混ぜて、書き出す</h2>
+    <h2><span class="no">6</span>聴いて、混ぜて、書き出す</h2>
     <figure>
       <div class="shot">
         <img src="manual/04-player.png" alt="再生と書き出しのパネル" width="1280" height="1200">
@@ -253,7 +276,7 @@
   </section>
 
   <section id="output">
-    <h2><span class="no">6</span>書き出したファイル</h2>
+    <h2><span class="no">7</span>書き出したファイル</h2>
     <table>
       <tr><th>保存先</th><td>初期値は、元のファイルと同じフォルダです（保存の画面で変えられます）</td></tr>
       <tr><th>ファイル名</th><td>バランス 100% のとき <code>元の名前_retrace.wav</code><br>それ以外は <code>元の名前_retrace_mix85.wav</code> のように、バランスの値が入ります</td></tr>
@@ -261,14 +284,20 @@
       <tr><th>長さ・位置</th><td>元のファイルと同じ長さです。DAW で元の音と頭をそろえて並べると、位置もぴったり合います</td></tr>
       <tr><th>元のファイル</th><td>書き換えません</td></tr>
     </table>
-    <p class="small muted">ステレオのファイルは、左右をまとめてモノラルで処理します。音量は、処理の前に一番大きいところが約 −1dB になるようそろえます。</p>
+    <p class="small muted">ステレオのファイルは、<a href="#stereo">選んだ方法</a>でモノラルにまとめて処理します。音量は、処理の前に一番大きいところが約 −1dB になるようそろえます。</p>
   </section>
 
   <section id="faq">
-    <h2><span class="no">7</span>うまくいかないとき</h2>
+    <h2><span class="no">8</span>うまくいかないとき</h2>
     <dl class="faq">
       <dt>アプリが開けない</dt>
-      <dd>Apple Silicon（M1 以降）の Mac と macOS 15 以降が必要です。Intel の Mac では動きません。会社や学校などで管理されている Mac では、管理者の設定で開けないことがあります。</dd>
+      <dd>Apple Silicon（M1 以降）の Mac と macOS 15 以降が必要です。Intel の Mac では動きません。空き容量が 1GB ほど必要です。会社や学校などで管理されている Mac では、管理者の設定で開けないことがあります。</dd>
+
+      <dt>「準備中…」のまま進まない・応答しない</dt>
+      <dd>初めて開いたときの準備は、ふつう数秒〜数十秒で終わります。数分たっても変わらないときは、アプリを終了してから開き直してください。それでも同じときは、下の「ログ」を送ってください。</dd>
+
+      <dt>不具合を報告したい（ログ）</dt>
+      <dd>メニューの「Voice Retrace」→「ログを Finder で表示」を選ぶと、動作の記録（<code>voiceretrace.log</code>）が表示されます。このファイルを添えて連絡していただけると、原因を調べやすくなります。音声の中身は記録されません（記録されるのは、Mac の機種と macOS のバージョン、アプリの場所、処理したファイルの名前と長さ、処理時間、使ったメモリなどです）。</dd>
 
       <dt>一覧に「エラー」と出た</dt>
       <dd>「エラー」の文字にマウスを乗せると、理由が表示されます。音声ファイルが壊れている、対応していない形式、などが考えられます。別の形式（wav など）に書き出し直してから入れてみてください。</dd>
